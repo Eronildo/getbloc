@@ -1,7 +1,7 @@
 name: getbloc
 description: BLoC pattern in GetX.
 version: 0.0.1
-homepage: https://github.com/Eronildo
+homepage: https://github.com/Eronildo/getbloc
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

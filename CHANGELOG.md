@@ -1,3 +1,3 @@
-## 0.0.1
+## [0.0.1] - 2021-05-31
 
-* TODO: Describe initial release.
+* BLoC pattern in GetX.
