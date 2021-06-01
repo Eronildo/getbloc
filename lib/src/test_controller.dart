@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:meta/meta.dart';
-import 'package:flutter_test/flutter_test.dart' as test;
+import 'package:test/test.dart' as test;
 
 import 'controller.dart';
 
