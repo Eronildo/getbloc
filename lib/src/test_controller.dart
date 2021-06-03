@@ -159,12 +159,14 @@ Future<void> internalControllerTest<C extends BaseController<State>, State>({
       final states = <State>[];
       final controller = build();
       // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
-      if (seed != null) controller.state = seed();
+      if (seed != null) controller.emit(seed());
       final subscription = controller.stream.skip(skip).listen(states.add);
       try {
         await act?.call(controller);
       } catch (error) {
-        unhandledErrors.add(error);
+        unhandledErrors.add(
+          error is ControllerUnhandledErrorException ? error.error : error,
+        );
       }
       if (wait != null) await Future<void>.delayed(wait);
       await Future<void>.delayed(Duration.zero);
@@ -178,7 +180,9 @@ Future<void> internalControllerTest<C extends BaseController<State>, State>({
       await verify?.call(controller);
     },
     (Object error, _) {
-      if (shallowEquality && error is test.TestFailure) {
+      if (error is ControllerUnhandledErrorException) {
+        unhandledErrors.add(error.error);
+      } else if (shallowEquality && error is test.TestFailure) {
         // ignore: only_throw_errors
         throw test.TestFailure(
           // ignore: leading_newlines_in_multiline_strings

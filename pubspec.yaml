@@ -1,6 +1,6 @@
 name: getbloc
 description: BLoC pattern in GetX.
-version: 0.0.1
+version: 0.0.5
 homepage: https://github.com/Eronildo/getbloc
 
 environment:

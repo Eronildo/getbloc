@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:getbloc/src/controller.dart';
 
+typedef ListenerCallback = void Function(dynamic state);
+
 /// The [ListenerWidget] is a Listener Widget of the Controller's State.
 class ListenerWidget extends StatefulWidget {
   const ListenerWidget(this.controller, this.listener, {this.child});
-  final Controller controller;
-  final VoidCallback listener;
+  final BaseController controller;
+  final ListenerCallback listener;
   final Widget? child;
 
   @override
@@ -19,7 +21,10 @@ class _ListenerWidgetState extends State<ListenerWidget> {
 
   @override
   void initState() {
-    subs = widget.controller.stream.listen((_) => widget.listener());
+    subs = widget.controller.rxState.listen(
+      widget.listener,
+      cancelOnError: false,
+    );
     super.initState();
   }
 
