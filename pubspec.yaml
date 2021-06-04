@@ -1,6 +1,6 @@
 name: getbloc
-description: BLoC pattern in GetX.
-version: 0.0.5
+description: Create GetX Controllers with Events and/or States, instead using Provider as the bloc library uses, GetBloc uses GetX.
+version: 0.0.6
 homepage: https://github.com/Eronildo/getbloc
 
 environment:

@@ -1,3 +1,9 @@
+## [0.0.6] - 2021-06-03
+
+* Fix Controller formatting according to dartfmt;
+* Add better pubspec description;
+* Add a README description.
+
 ## [0.0.5] - 2021-06-03
 
 * Add Example Project;

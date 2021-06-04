@@ -45,7 +45,7 @@ abstract class Controller<Event, State> extends BaseController<State> {
 
   /// The current [ObserverController] instance.
   static ObserverController observer = ObserverController();
-  
+
   StreamSubscription<TransformController<Event, State>>?
       _transitionSubscription;
 
@@ -366,7 +366,7 @@ abstract class BaseController<State> extends StateBase<State> {
   }
 }
 
-/// An interface that extends all functionalities of 
+/// An interface that extends all functionalities of
 /// [GetxController] and implemented by [BaseController].
 abstract class StateBase<State> extends GetxController {
   StateBase(this._initialState) {
