@@ -1,3 +1,7 @@
+## [0.0.7] - 2021-06-07
+
+* Fix onChange method.
+
 ## [0.0.6] - 2021-06-03
 
 * Fix Controller formatting according to dartfmt;

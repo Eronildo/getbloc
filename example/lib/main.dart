@@ -23,6 +23,12 @@ class SimpleObserverController extends ObserverController {
     print(error);
     super.onError(controller, error, stackTrace);
   }
+
+  @override
+  void onChange(BaseController controller, StateChange change) {
+    print(change);
+    super.onChange(controller, change);
+  }
 }
 
 void main() {

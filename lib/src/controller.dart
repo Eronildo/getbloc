@@ -276,6 +276,7 @@ abstract class BaseController<State> extends StateBase<State> {
 
   bool _emitted = false;
 
+  /// The current state stream.
   Stream<State> get stream => _stateController.stream;
 
   /// Updates the [state] to the provided [state].
@@ -285,12 +286,12 @@ abstract class BaseController<State> extends StateBase<State> {
   /// To allow for the possibility of notifying listeners of the initial state,
   /// emitting a state which is equal to the initial state is allowed as long
   /// as it is the first thing emitted by the instance.
-  void emit(State newState) {
+  void emit(State state) {
     if (_stateController.isClosed) return;
-    if (newState == state && _emitted) return;
+    if (state == _state && _emitted) return;
     onChange(StateChange<State>(currentState: this.state, nextState: state));
-    _state = newState;
-    _stateController.add(newState);
+    _state = state;
+    _stateController.add(_state);
     _emitted = true;
   }
 
@@ -302,7 +303,7 @@ abstract class BaseController<State> extends StateBase<State> {
   /// **Note: `super.onChange` should always be called first.**
   /// ```dart
   /// @override
-  /// void onChange(Change change) {
+  /// void onChange(StateChange change) {
   ///   // Always call super.onChange with the current change
   ///   super.onChange(change);
   ///
@@ -369,14 +370,17 @@ abstract class BaseController<State> extends StateBase<State> {
 /// An interface that extends all functionalities of
 /// [GetxController] and implemented by [BaseController].
 abstract class StateBase<State> extends GetxController {
-  StateBase(this._initialState) {
-    _state = _initialState;
+  StateBase(this._state) {
+    _state = _state;
   }
 
-  final State _initialState;
+  final State _state;
 
-  late final rxState = Rx<State>(_initialState);
+  /// The current [rxState].
+  late final rxState = Rx<State>(_state);
 
+  /// The current [state].
   State get state => rxState.value;
+  
   set _state(State value) => rxState.value = value;
 }
