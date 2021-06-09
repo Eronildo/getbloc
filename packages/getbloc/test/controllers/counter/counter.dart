@@ -7,4 +7,3 @@ export './on_error_controller.dart';
 export './on_event_error_controller.dart';
 export './on_exception_controller.dart';
 export './on_transform_error_controller.dart';
-export './side_effect_counter_controller.dart';

@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:meta/meta.dart';
-import 'package:test/test.dart' as test;
 
-import 'controller.dart';
+import 'package:meta/meta.dart';
+import 'package:getbloc/getbloc.dart';
+import 'package:test/test.dart' as test;
 
 /// Creates a new `controller`-specific test case with the given [description].
 /// [testController] will handle asserting that the `controller` emits the [expect]ed

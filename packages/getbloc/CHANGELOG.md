@@ -1,3 +1,9 @@
+## [1.0.0] - 2021-06-09
+
+* Add unit tests;
+* Add pedantic linter;
+* Separate test library from getbloc.
+
 ## [0.0.7] - 2021-06-07
 
 * Fix onChange method.

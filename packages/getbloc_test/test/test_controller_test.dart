@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:getbloc/getbloc.dart';
+import 'package:getbloc_test/getbloc_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:test/test.dart';
@@ -119,7 +119,7 @@ void main() {
       });
     });
 
-    /*group('AsyncCounterController', () {
+    group('AsyncCounterController', () {
       testController<AsyncCounterController, int>(
         'emits [] when nothing is added',
         build: () => AsyncCounterController(),
@@ -148,8 +148,9 @@ void main() {
       testController<AsyncCounterController, int>(
         'emits [2] when CounterEvent.increment is added twice and skip: 1',
         build: () => AsyncCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         skip: 1,
         expect: () => const <int>[2],
       );
@@ -229,8 +230,9 @@ void main() {
       testController<InstantEmitController, int>(
         'emits [3] when CounterEvent.increment is added twice and skip: 2',
         build: () => InstantEmitController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         skip: 2,
         expect: () => const <int>[3],
       );
@@ -272,8 +274,9 @@ void main() {
       testController<MultiCounterController, int>(
         'emits [4] when CounterEvent.increment is added twice and skip: 3',
         build: () => MultiCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         skip: 3,
         expect: () => const <int>[4],
       );
@@ -284,7 +287,7 @@ void main() {
         act: (controller) => controller.add(CounterEvent.increment),
         expect: () => const <int>[11, 12],
       );
-    });*/
+    });
 
     group('ComplexTestController', () {
       testController<ComplexTestController, ComplexTestState>(
@@ -310,7 +313,8 @@ void main() {
         expect: () => <Matcher>[isA<ComplexTestStateA>()],
       );
     });
-    /*group('ErrorCounterController', () {
+
+    group('ErrorCounterController', () {
       testController<ErrorCounterController, int>(
         'emits [] when nothing is added',
         build: () => ErrorCounterController(),
@@ -320,8 +324,9 @@ void main() {
       testController<ErrorCounterController, int>(
         'emits [2] when increment is added twice and skip: 1',
         build: () => ErrorCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         skip: 1,
         expect: () => const <int>[2],
       );
@@ -352,8 +357,9 @@ void main() {
       testController<ErrorCounterController, int>(
         'emits [1, 2] when increment is added twice',
         build: () => ErrorCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         expect: () => const <int>[1, 2],
       );
 
@@ -361,8 +367,9 @@ void main() {
         'throws two ErrorCounterControllerErrors '
         'when increment is added twice',
         build: () => ErrorCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         errors: () => <Matcher>[
           isA<ErrorCounterControllerError>(),
           isA<ErrorCounterControllerError>(),
@@ -373,8 +380,9 @@ void main() {
         'emits [1, 2] and throws two ErrorCounterControllerErrors '
         'when increment is added twice',
         build: () => ErrorCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         expect: () => const <int>[1, 2],
         errors: () => <Matcher>[
           isA<ErrorCounterControllerError>(),
@@ -393,8 +401,9 @@ void main() {
       testController<ExceptionCounterController, int>(
         'emits [2] when increment is added twice and skip: 1',
         build: () => ExceptionCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         skip: 1,
         expect: () => const <int>[2],
       );
@@ -425,8 +434,9 @@ void main() {
       testController<ExceptionCounterController, int>(
         'emits [1, 2] when increment is added twice',
         build: () => ExceptionCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         expect: () => const <int>[1, 2],
       );
 
@@ -434,8 +444,9 @@ void main() {
         'throws two ExceptionCounterControllerExceptions '
         'when increment is added twice',
         build: () => ExceptionCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         errors: () => <Matcher>[
           isA<ExceptionCounterControllerException>(),
           isA<ExceptionCounterControllerException>(),
@@ -446,15 +457,16 @@ void main() {
         'emits [1, 2] and throws two ExceptionCounterControllerException '
         'when increment is added twice',
         build: () => ExceptionCounterController(),
-        act: (controller) =>
-            controller..add(CounterEvent.increment)..add(CounterEvent.increment),
+        act: (controller) => controller
+          ..add(CounterEvent.increment)
+          ..add(CounterEvent.increment),
         expect: () => const <int>[1, 2],
         errors: () => <Matcher>[
           isA<ExceptionCounterControllerException>(),
           isA<ExceptionCounterControllerException>(),
         ],
       );
-    });*/
+    });
 
     group('SideEffectCounterController', () {
       late Repository repository;

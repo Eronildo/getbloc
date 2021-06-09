@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:getbloc/getbloc.dart';
 
-import 'counter_controller.dart';
+import 'controllers.dart';
 
 class Repository {
   void sideEffect() {}
@@ -19,10 +19,6 @@ class SideEffectCounterController extends Controller<CounterEvent, int> {
       case CounterEvent.increment:
         repository.sideEffect();
         yield state + 1;
-        break;
-      case CounterEvent.decrement:
-        repository.sideEffect();
-        yield state - 1;
         break;
     }
   }

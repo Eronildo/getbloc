@@ -1,6 +1,5 @@
 # Miscellaneous
 *.class
-*.lock
 *.log
 *.pyc
 *.swp
@@ -16,11 +15,10 @@
 *.iws
 .idea/
 
-# Visual Studio Code related
-.classpath
-.project
-.settings/
-.vscode/
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -40,8 +38,6 @@ build/
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
-**/android/key.properties
-*.jks
 
 # iOS/XCode related
 **/ios/**/*.mode1v3

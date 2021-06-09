@@ -191,6 +191,7 @@ class CounterController extends Controller<CounterEvent, int> {
 enum ButtonsOrientation {
   /// Horizontal Orientation
   horizontal,
+
   /// Vertical Orientation
   vertical,
 }
