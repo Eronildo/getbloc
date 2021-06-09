@@ -279,6 +279,6 @@ void main() {
 
 ## Examples
 
-- [Counter](https://github.com/Eronildo/getbloc/tree/main/example) - an example of how to create a `CounterController`.
+- [Counter](https://github.com/Eronildo/getbloc/tree/main/packages/getbloc/example) - an example of how to create a `CounterController`.
 
 See more about how to use `Obx`, `GetView` and `Bindings` to hook up a `CounterPage` widget to a `CounterController` in [GetX](https://pub.dev/packages/get).
