@@ -19,7 +19,7 @@ class ObserverController {
   @mustCallSuper
   void onEvent(Controller controller, Object? event) {}
 
-  /// Called whenever a [Change] occurs in any [controller]
+  /// Called whenever a [StateChange] occurs in any [controller]
   /// A [change] occurs when a new state is emitted.
   /// [onChange] is called before a controller's state has been updated.
   @protected

@@ -11,10 +11,13 @@ import 'transform_controller.dart';
 typedef TransitionFunction<Event, State>
     = Stream<TransformController<Event, State>> Function(Event);
 
+/// {@template controller_unhandled_error_exception}
 /// Exception thrown when an unhandled error occurs within a controller.
 ///
 /// _Note: thrown in debug mode only_
+/// {@endtemplate}
 class ControllerUnhandledErrorException implements Exception {
+  /// {@macro controller_unhandled_error_exception}
   ControllerUnhandledErrorException(
     this.controller,
     this.error, [
@@ -38,7 +41,12 @@ class ControllerUnhandledErrorException implements Exception {
   }
 }
 
+/// {@template controller}
+/// Takes a `Stream` of `Events` as input
+/// and transforms them into a `Stream` of `States` as output.
+/// {@endtemplate}
 abstract class Controller<Event, State> extends BaseController<State> {
+  /// {@macro controller}
   Controller(State initialState) : super(initialState) {
     _bindEventsToStates();
   }
@@ -56,7 +64,7 @@ abstract class Controller<Event, State> extends BaseController<State> {
   }
 
   /// Notifies the [Controller] of a new [event] which triggers [mapEventToState].
-  /// If [close] has already been called, any subsequent calls to [add] will
+  /// If [onClose] has already been called, any subsequent calls to [add] will
   /// be ignored and will not result in any subsequent state changes.
   void add(Event event) {
     if (_eventController.isClosed) return;
@@ -208,10 +216,10 @@ abstract class Controller<Event, State> extends BaseController<State> {
   /// In addition, if [onClose] is called while `events` are still being
   /// processed, the [Controller] will finish processing the pending `events`.
   @override
-  void onClose() {
-    _eventController.close();
-    _transitionSubscription?.cancel();
-    super.onClose();
+  Future<void> onClose() async {
+    await _eventController.close();
+    await _transitionSubscription?.cancel();
+    return super.onClose();
   }
 
   void _bindEventsToStates() {
@@ -241,6 +249,7 @@ abstract class Controller<Event, State> extends BaseController<State> {
   }
 }
 
+/// {@template state_controller}
 /// A [StateController] is similar to [Controller] but has no notion of events
 /// and relies on methods to [emit] new states.
 ///
@@ -256,13 +265,18 @@ abstract class Controller<Event, State> extends BaseController<State> {
 ///   void increment() => emit(state + 1);
 /// }
 /// ```
+/// {@endtemplate}
 abstract class StateController<State> extends BaseController<State> {
+  /// {@macro state_controller}
   StateController(State initialState) : super(initialState);
 }
 
+/// {@template base_controller}
 /// An interface for the core functionality implemented by
 /// both [Controller] and [StateController].
+/// {@endtemplate}
 abstract class BaseController<State> extends StateBase<State> {
+  /// {@macro base_controller}
   BaseController(State initialState) : super(initialState) {
     // ignore: invalid_use_of_protected_member
     Controller.observer.onCreate(this);
@@ -288,10 +302,10 @@ abstract class BaseController<State> extends StateBase<State> {
   /// as it is the first thing emitted by the instance.
   void emit(State state) {
     if (_stateController.isClosed) return;
-    if (state == _state && _emitted) return;
+    if (state == this.state && _emitted) return;
     onChange(StateChange<State>(currentState: this.state, nextState: state));
     _state = state;
-    _stateController.add(_state);
+    _stateController.add(state);
     _emitted = true;
   }
 
@@ -326,7 +340,7 @@ abstract class BaseController<State> extends StateBase<State> {
     onError(error, stackTrace ?? StackTrace.current);
   }
 
-  /// Called whenever an [error] occurs and notifies [controllerObserver.onError].
+  /// Called whenever an [error] occurs and notifies [ObserverController.onError].
   ///
   /// In debug mode, [onError] throws a [ControllerUnhandledErrorException] for
   /// improved visibility.
@@ -359,17 +373,20 @@ abstract class BaseController<State> extends StateBase<State> {
   /// Once [onClose] is called, the instance can no longer be used.
   @override
   @mustCallSuper
-  void onClose() {
+  Future<void> onClose() async {
+    super.onClose();
     // ignore: invalid_use_of_protected_member
     Controller.observer.onClose(this);
-    _stateController.close();
-    super.onClose();
+    return await _stateController.close();
   }
 }
 
+/// {@template state_base}
 /// An interface that extends all functionalities of
 /// [GetxController] and implemented by [BaseController].
+/// {@endtemplate}
 abstract class StateBase<State> extends GetxController {
+  /// {@macro state_base}
   StateBase(this._state) {
     _state = _state;
   }
@@ -381,6 +398,6 @@ abstract class StateBase<State> extends GetxController {
 
   /// The current [state].
   State get state => rxState.value;
-  
+
   set _state(State value) => rxState.value = value;
 }

@@ -1,9 +1,12 @@
 import 'package:meta/meta.dart';
 
+/// {@template state_change}
 /// A [StateChange] represents the change from one [State] to another.
 /// A [StateChange] consists of the [currentState] and [nextState].
+/// {@endtemplate}
 @immutable
 class StateChange<State> {
+  /// {@macro state_change}
   const StateChange({required this.currentState, required this.nextState});
 
   /// The current [State] at the time of the [StateChange].
@@ -29,10 +32,13 @@ class StateChange<State> {
   }
 }
 
+/// {@template transform_controller}
 /// A [TransformController] is the change from one state to another.
 /// Consists of the [currentState], an [event], and the [nextState].
+/// {@endtemplate}
 @immutable
 class TransformController<Event, State> extends StateChange<State> {
+  /// {@macro transform_controller}
   const TransformController({
     required State currentState,
     required this.event,

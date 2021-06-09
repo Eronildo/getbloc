@@ -170,7 +170,7 @@ Future<void> internalControllerTest<C extends BaseController<State>, State>({
       }
       if (wait != null) await Future<void>.delayed(wait);
       await Future<void>.delayed(Duration.zero);
-      controller.onClose();
+      await controller.onClose();
       if (expect != null) {
         final dynamic expected = expect();
         shallowEquality = '$states' == '$expected';
@@ -188,7 +188,7 @@ Future<void> internalControllerTest<C extends BaseController<State>, State>({
           // ignore: leading_newlines_in_multiline_strings
           '''${error.message}
 WARNING: Please ensure state instances extend Equatable, override == and hashCode, or implement Comparable.
-Alternatively, consider using Matchers in the expect of the testController rather than concrete state instances.\n''',
+Alternatively, consider using Matchers in the expect of the internalControllerTest rather than concrete state instances.\n''',
         );
       } else {
         // ignore: only_throw_errors

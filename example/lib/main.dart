@@ -47,7 +47,7 @@ class App extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       getPages: [
-        GetPage(
+        GetPage<CounterPage>(
           name: '/',
           page: () => CounterPage(),
           binding: CounterBinding(),
@@ -57,10 +57,12 @@ class App extends StatelessWidget {
   }
 }
 
+/// Binding class to connect the page with the controller
 class CounterBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => ButtonsOrientationController());
+    // ignore: cascade_invocations
     Get.lazyPut(() => CounterController());
   }
 }
@@ -68,6 +70,7 @@ class CounterBinding extends Bindings {
 /// A [StatelessWidget] which demonstrates
 /// how to consume and interact with a [CounterController].
 class CounterPage extends GetView<CounterController> {
+  // ignore: public_member_api_docs
   final buttonsOrientationController = Get.find<ButtonsOrientationController>();
 
   @override
@@ -76,7 +79,8 @@ class CounterPage extends GetView<CounterController> {
       appBar: AppBar(title: const Text('Counter')),
       body: ListenerWidget(
         buttonsOrientationController, // Listen the state change of the buttons orientation
-        (state) => print('[ListenerWidget]: $state'),
+        // ignore: argument_type_not_assignable
+        (ButtonsOrientation state) => print('[ListenerWidget]: $state'),
         child: Obx(
           () {
             final counter = controller.state;
@@ -114,7 +118,7 @@ class CounterPage extends GetView<CounterController> {
           buttonsOrientationController.state == ButtonsOrientation.vertical
               ? Icons.swap_horiz
               : Icons.swap_vert,
-          () => buttonsOrientationController.toggleOrientation(),
+          buttonsOrientationController.toggleOrientation,
         ),
         _getButton(
           Icons.add,
@@ -165,6 +169,7 @@ enum CounterEvent {
 
 /// A simple [Controller] which manages an `int` as its state.
 class CounterController extends Controller<CounterEvent, int> {
+  // ignore: public_member_api_docs
   CounterController() : super(0);
 
   @override
@@ -182,15 +187,20 @@ class CounterController extends Controller<CounterEvent, int> {
   }
 }
 
+/// Buttons Orientation State
 enum ButtonsOrientation {
+  /// Horizontal Orientation
   horizontal,
+  /// Vertical Orientation
   vertical,
 }
 
 /// A simple [StateController] which manages the [ButtonsOrientation] as its state.
 class ButtonsOrientationController extends StateController<ButtonsOrientation> {
+  // ignore: public_member_api_docs
   ButtonsOrientationController() : super(ButtonsOrientation.vertical);
 
+  /// Change the state to another orientation.
   void toggleOrientation() {
     emit(state == ButtonsOrientation.vertical
         ? ButtonsOrientation.horizontal
