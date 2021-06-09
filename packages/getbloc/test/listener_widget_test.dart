@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:getbloc/getbloc.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 class SimpleCounterStateController extends StateController<int> {
   SimpleCounterStateController() : super(0);

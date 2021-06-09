@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:test/test.dart';
 import 'package:getbloc/getbloc.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pedantic/pedantic.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 import 'controllers/controllers.dart';
 

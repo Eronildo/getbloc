@@ -1,5 +1,5 @@
-import 'package:test/test.dart';
 import 'package:getbloc/getbloc.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 import 'controllers/counter/counter_controller.dart';
 
