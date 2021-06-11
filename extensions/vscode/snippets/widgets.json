@@ -1,0 +1,70 @@
+{
+  "Flutter Page": {
+    "prefix": "page",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      "",
+      "class $1Page extends StatelessWidget {",
+      "  @override",
+      "  Widget build(BuildContext context) {",
+      "    return Scaffold(",
+      "      appBar: AppBar(),",
+      "      body: Container(),",
+      "    );",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "Create a Flutter Page"
+  },
+  "Flutter Page GetView": {
+    "prefix": "pagegetview",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      "import 'package:get/get.dart';",
+      "",
+      "class ${1:Subject}Page extends GetView<${1:Subject}Controller> {",
+      "  @override",
+      "  Widget build(BuildContext context) {",
+      "    return Scaffold(",
+      "      appBar: AppBar(),",
+      "      body: Container(),",
+      "    );",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "Create a Flutter Page with GetView"
+  },
+  "Flutter Widget": {
+    "prefix": "widget",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      "",
+      "class $1Widget extends StatelessWidget {",
+      "  @override",
+      "  Widget build(BuildContext context) {",
+      "    return Container();",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "Create a Flutter Widget"
+  },
+  "Flutter Material": {
+    "prefix": "material",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      ""
+    ],
+    "description": "Import Material"
+  },
+  "Import Material": {
+    "prefix": "importM",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      ""
+    ],
+    "description": "Import Material"
+  }
+}

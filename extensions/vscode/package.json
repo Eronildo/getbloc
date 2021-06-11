@@ -1,0 +1,210 @@
+{
+  "name": "getbloc",
+  "displayName": "getbloc",
+  "description": "Support for the GetBloc library and provides tools for effectively creating GetX controllers with BLoC pattern for Flutter apps.",
+  "version": "0.1.0",
+  "publisher": "EronildoCavalcanti",
+  "bugs": {
+    "url": "https://github.com/Eronildo/getbloc/issues",
+    "email": "eronildoj@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eronildo/getbloc"
+  },
+  "engines": {
+    "vscode": "^1.56.0"
+  },
+  "categories": [
+    "Snippets",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "dart",
+    "flutter",
+    "bloc",
+    "get",
+    "getx",
+    "getbloc",
+    "pattern",
+    "state-management"
+  ],
+  "icon": "assets/logo.png",
+  "activationEvents": [
+    "onCommand:extension.new-controller",
+    "workspaceContains:**/pubspec.yaml"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "GetBloc",
+        "properties": {
+          "getbloc.checkForUpdates": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to check if you are using the latest package versions at startup."
+          },
+          "getbloc.newControllerTemplate": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "equatable",
+              "simple"
+            ],
+            "enumDescriptions": [
+              "automatically pick template based on dependencies",
+              "always use equatable template",
+              "always use simple template"
+            ]
+          }
+        }
+      },
+      {
+        "title": "GetBloc",
+        "properties": {
+          "getbloc.newStateControllerTemplate": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "equatable",
+              "simple"
+            ],
+            "enumDescriptions": [
+              "automatically pick template based on dependencies",
+              "always use equatable template",
+              "always use simple template"
+            ]
+          }
+        }
+      },
+      {
+        "title": "GetBloc",
+        "properties": {
+          "getbloc.newModuleTemplate": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "equatable",
+              "simple"
+            ],
+            "enumDescriptions": [
+              "automatically pick template based on dependencies",
+              "always use equatable template",
+              "always use simple template"
+            ]
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.new-module",
+        "title": "GetBloc: New Module",
+        "icon": "assets/logo.png"
+      },
+      {
+        "command": "extension.new-binding",
+        "title": "GetBloc: New Binding Module",
+        "icon": "assets/logo.png"
+      },
+      {
+        "command": "extension.new-controller",
+        "title": "GetBloc: New Controller",
+        "icon": "assets/logo.png"
+      },
+      {
+        "command": "extension.new-statecontroller",
+        "title": "GetBloc: New State Controller",
+        "icon": "assets/logo.png"
+      },
+      {
+        "command": "extension.wrap-obx",
+        "title": "Wrap with Obx"
+      },
+      {
+        "command": "extension.wrap-listenerwidget",
+        "title": "Wrap with ListenerWidget"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.new-module",
+          "group": "controllerGroup@1",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "extension.new-binding",
+          "group": "controllerGroup@1",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "extension.new-controller",
+          "group": "controllerGroup@1",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "extension.new-statecontroller",
+          "group": "controllerGroup@1",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "extension.wrap-obx",
+          "when": "editorLangId == dart"
+        },
+        {
+          "command": "extension.wrap-listenerwidget",
+          "when": "editorLangId == dart"
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "language": "dart",
+        "path": "./snippets/controller.json"
+      },
+      {
+        "language": "dart",
+        "path": "./snippets/test_controller.json"
+      },
+      {
+        "language": "dart",
+        "path": "./snippets/widgets.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "webpack --mode production",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
+    "test-compile": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/change-case": "^2.3.1",
+    "@types/js-yaml": "^3.12.1",
+    "@types/lodash": "^4.14.121",
+    "@types/mkdirp": "^0.5.2",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^12.7.8",
+    "@types/rimraf": "^2.0.2",
+    "@types/semver": "^6.0.2",
+    "@types/vscode": "^1.56.0",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.12.1",
+    "typescript": "^3.5.1",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
+  },
+  "dependencies": {
+    "change-case": "^3.1.0",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.19",
+    "mkdirp": "^0.5.1",
+    "semver": "^6.3.0"
+  }
+}

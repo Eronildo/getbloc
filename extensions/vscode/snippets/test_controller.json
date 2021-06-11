@@ -1,0 +1,17 @@
+{
+  "TestController": {
+    "prefix": "testcontroller",
+    "body": [
+      "testController<${1:Subject}Controller, $1State>(",
+      "\t'emits [${2:MyState}] when ${3:MyEvent} is added.',",
+      "\tbuild: () => ${1:Subject}Controller(),",
+      "\tact: (controller) => controller.add(${3:MyEvent()}),",
+      "\texpect: () => const <$1State>[${2:MyState()}],",
+      ");"
+    ]
+  },
+  "Import package:getbloc_test": {
+    "prefix": "importgetbloctest",
+    "body": "import 'package:getbloc_test/getbloc_test.dart';"
+  }
+}
