@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 
@@ -400,4 +401,15 @@ abstract class StateBase<State> extends GetxController {
   State get state => rxState.value;
 
   set _state(State value) => rxState.value = value;
+}
+
+/// {@template obx_extension}
+/// [obx] is a extension on [BaseController]
+/// handles building a widget in response to new `states`.
+///
+/// This is analogous to the `builder` function in `ObserverWidget`.
+/// {@endtemplate}
+extension ObxExtension<T> on BaseController<T> {
+  /// {@macro obx_extension}
+  Widget obx(NotifierBuilder<T> widget) => Obx(() => widget(state));
 }

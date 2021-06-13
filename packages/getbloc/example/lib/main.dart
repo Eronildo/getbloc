@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:getbloc/getbloc.dart';
 
 /// Custom [ObserverController] which observes all controllers instances.
@@ -70,34 +69,30 @@ class CounterBinding extends Bindings {
 /// A [StatelessWidget] which demonstrates
 /// how to consume and interact with a [CounterController].
 class CounterPage extends GetView<CounterController> {
-  // ignore: public_member_api_docs
-  final buttonsOrientationController = Get.find<ButtonsOrientationController>();
+  final _buttonsOrientationController =
+      Get.find<ButtonsOrientationController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Counter')),
       body: ListenerWidget(
-        buttonsOrientationController, // Listen the state change of the buttons orientation
-        // ignore: argument_type_not_assignable
-        (ButtonsOrientation state) => print('[ListenerWidget]: $state'),
-        child: Obx(
-          () {
-            final counter = controller.state;
-            return Center(
-              child: Text('$counter',
-                  style: Theme.of(context).textTheme.headline1),
-            );
-          },
+        _buttonsOrientationController, // Listen the state change of the buttons orientation
+        (state) => print('[ListenerWidget]: $state'),
+        child: ObserverWidget(
+          controller,
+          (counter) => Center(
+            child:
+                Text('$counter', style: Theme.of(context).textTheme.headline1),
+          ),
         ),
       ),
       floatingActionButton: _floatingButtons,
     );
   }
 
-  Widget get _floatingButtons => Obx(() {
-        final orientation = buttonsOrientationController.state;
-
+  Widget get _floatingButtons =>
+      _buttonsOrientationController.obx((orientation) {
         if (orientation == ButtonsOrientation.vertical) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -115,10 +110,10 @@ class CounterPage extends GetView<CounterController> {
 
   List<Widget> get _buttons => [
         _getButton(
-          buttonsOrientationController.state == ButtonsOrientation.vertical
+          _buttonsOrientationController.state == ButtonsOrientation.vertical
               ? Icons.swap_horiz
               : Icons.swap_vert,
-          buttonsOrientationController.toggleOrientation,
+          _buttonsOrientationController.toggleOrientation,
         ),
         _getButton(
           Icons.add,
@@ -167,9 +162,11 @@ enum CounterEvent {
   error,
 }
 
+/// {@template counter_controller}
 /// A simple [Controller] which manages an `int` as its state.
+/// {@endtemplate}
 class CounterController extends Controller<CounterEvent, int> {
-  // ignore: public_member_api_docs
+  /// {@macro counter_controller}
   CounterController() : super(0);
 
   @override
@@ -196,9 +193,11 @@ enum ButtonsOrientation {
   vertical,
 }
 
+/// {@template buttons_orientation_controller}
 /// A simple [StateController] which manages the [ButtonsOrientation] as its state.
+/// {@endtemplate}
 class ButtonsOrientationController extends StateController<ButtonsOrientation> {
-  // ignore: public_member_api_docs
+  /// {@macro buttons_orientation_controller}
   ButtonsOrientationController() : super(ButtonsOrientation.vertical);
 
   /// Change the state to another orientation.

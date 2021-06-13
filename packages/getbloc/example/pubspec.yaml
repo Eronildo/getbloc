@@ -9,9 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  get: ^4.1.4
   getbloc:
     path: ../
+
+dev_dependencies:
+  effective_dart: ^1.2.0
 
 flutter:
   uses-material-design: true

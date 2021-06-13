@@ -1,7 +1,7 @@
 name: getbloc
 description: Create GetX Controllers with Events and/or States, instead using Provider as the bloc library uses, GetBloc uses GetX.
-version: 1.0.0
-homepage: https://github.com/Eronildo/getbloc/tree/master/packages/getbloc
+version: 1.1.0
+homepage: https://github.com/Eronildo/getbloc/tree/main/packages/getbloc
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

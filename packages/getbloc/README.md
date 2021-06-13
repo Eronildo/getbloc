@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/Eronildo/getbloc/master/docs/assets/getbloc_logo.png" height="100" alt="GetBloc" />
+<img src="https://raw.githubusercontent.com/Eronildo/getbloc/main/docs/assets/getbloc_logo.png" height="100" alt="GetBloc" />
 </p>
 
 ---

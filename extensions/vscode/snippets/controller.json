@@ -83,17 +83,5 @@
   "Import package:getbloc": {
     "prefix": "importgetbloc",
     "body": "import 'package:getbloc/getbloc.dart';"
-  },
-  "ListenerWidget": {
-    "prefix": "listenerwidget",
-    "body": [
-      "ListenerWidget(",
-      "\tcontroller,",
-      "\t(state) {",
-      "\t\t${3:// TODO: implement listener}",
-      "\t},",
-      "\tchild: ${4:Container()},",
-      ")"
-    ]
   }
 }

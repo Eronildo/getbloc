@@ -11,7 +11,7 @@ class SimpleCounterStateController extends StateController<int> {
 class MyApp extends StatefulWidget {
   const MyApp({Key? key, this.onListenerCalled}) : super(key: key);
 
-  final ListenerCallback? onListenerCalled;
+  final void Function(dynamic)? onListenerCalled;
 
   @override
   State<MyApp> createState() => _MyAppState();

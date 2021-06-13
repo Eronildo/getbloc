@@ -1,3 +1,10 @@
+# 0.2.0
+
+- Add ObserverWidget snippet;
+- Wrap with ObserverWidget.
+- Change page template, now uses obx extension instead Obx widget;
+- Fix links in README.
+
 # 0.1.0
 
 Initial Version of the GetBloc Extension.

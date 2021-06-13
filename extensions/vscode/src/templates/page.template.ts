@@ -4,7 +4,7 @@ export function getPageTemplate(pageName: string) {
   const pascalCasePageName = changeCase.pascalCase(pageName.toLowerCase());
   const snakeCasePageName = changeCase.snakeCase(pageName.toLowerCase());
   return `import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:getbloc/getbloc.dart';
 
 import 'state/${snakeCasePageName}_controller.dart';
 
@@ -15,9 +15,8 @@ class ${pascalCasePageName}Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Obx(
-        () {
-          final state = controller.state;
+      body: controller.obx(
+        (state) {
           if (state is ${pascalCasePageName}Initial) {
             return Text('${pascalCasePageName} Initial State');
           }
@@ -35,7 +34,7 @@ export function getGetViewTemplate(pageName: string) {
   const snakeCasePageName = changeCase.snakeCase(pageName.toLowerCase());
   const controllerName = `${pascalCasePageName}Controller`;
   return `import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:getbloc/getbloc.dart';
 
 import 'state/${snakeCasePageName}_controller.dart';
 
@@ -46,9 +45,8 @@ class ${pascalCasePageName}Page extends GetView<${controllerName}> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Obx(
-        () {
-          final state = controller.state;
+      body: controller.obx(
+        (state) {
           if (state is ${pascalCasePageName}Initial) {
             return Text('${pascalCasePageName} Initial State');
           }

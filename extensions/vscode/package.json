@@ -2,7 +2,7 @@
   "name": "getbloc",
   "displayName": "getbloc",
   "description": "Support for the GetBloc library and provides tools for effectively creating GetX controllers with BLoC pattern for Flutter apps.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "EronildoCavalcanti",
   "bugs": {
     "url": "https://github.com/Eronildo/getbloc/issues",
@@ -125,6 +125,10 @@
       {
         "command": "extension.wrap-listenerwidget",
         "title": "Wrap with ListenerWidget"
+      },
+      {
+        "command": "extension.wrap-observerwidget",
+        "title": "Wrap with ObserverWidget"
       }
     ],
     "menus": {
@@ -157,6 +161,10 @@
         },
         {
           "command": "extension.wrap-listenerwidget",
+          "when": "editorLangId == dart"
+        },
+        {
+          "command": "extension.wrap-observerwidget",
           "when": "editorLangId == dart"
         }
       ]

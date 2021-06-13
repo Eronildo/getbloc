@@ -17,6 +17,10 @@ export class ControllerCodeActionProvider implements CodeActionProvider {
         command: "extension.wrap-listenerwidget",
         title: "Wrap with ListenerWidget",
       },
+      {
+        command: "extension.wrap-observerwidget",
+        title: "Wrap with ObserverWidget",
+      },
     ].map((c) => {
       let action = new CodeAction(c.title, CodeActionKind.Refactor);
       action.command = {

@@ -18,5 +18,16 @@ const listenerWidgetSnippet = (widget: string) => {
 )`;
 };
 
+const observerWidgetSnippet = (widget: string) => {
+  return `ObserverWidget(
+  controller,
+  (state) {
+    \${3:// TODO: return widget here based on Controller's state}
+    return ${widget};
+  },
+)`;
+};
+
 export const wrapWithObx = async () => wrapWith(obxSnippet);
 export const wrapWithListenerWidget = async () => wrapWith(listenerWidgetSnippet);
+export const wrapWithObserverWidget = async () => wrapWith(observerWidgetSnippet);

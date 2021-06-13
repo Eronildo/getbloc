@@ -1,3 +1,9 @@
+## [1.1.0] - 2021-06-13
+
+* Add Observer Widget;
+* Add BaseController Obx Extension;
+* Fix a counter example link in README.
+
 ## [1.0.0] - 2021-06-09
 
 * Add unit tests;

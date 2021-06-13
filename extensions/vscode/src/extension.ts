@@ -6,6 +6,7 @@ import {
   newStateController,
   wrapWithObx,
   wrapWithListenerWidget,
+  wrapWithObserverWidget,
   newModule,
   newBinding,
 } from "./commands";
@@ -23,6 +24,10 @@ export function activate(_context: ExtensionContext) {
     commands.registerCommand(
       "extension.wrap-listenerwidget",
       wrapWithListenerWidget
+    ),
+    commands.registerCommand(
+      "extension.wrap-observerwidget",
+      wrapWithObserverWidget
     ),
     languages.registerCodeActionsProvider(
       DART_MODE,

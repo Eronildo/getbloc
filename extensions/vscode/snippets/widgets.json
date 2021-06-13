@@ -1,4 +1,28 @@
 {
+  "ListenerWidget": {
+    "prefix": "listenerwidget",
+    "body": [
+      "ListenerWidget(",
+      "\tcontroller,",
+      "\t(state) {",
+      "\t\t${3:// TODO: implement listener}",
+      "\t},",
+      "\tchild: ${4:Container()},",
+      ")"
+    ]
+  },
+  "ObserverWidget": {
+    "prefix": "observerwidget",
+    "body": [
+      "ObserverWidget(",
+      "\tcontroller,",
+      "\t(state) {",
+      "\t\t${3:// TODO: return widget here based on Controller's state}",
+      "\t\treturn ${4:Container()};",
+      "\t},",
+      ")"
+    ]
+  },
   "Flutter Page": {
     "prefix": "page",
     "body": [
@@ -21,7 +45,7 @@
     "prefix": "pagegetview",
     "body": [
       "import 'package:flutter/material.dart';",
-      "import 'package:get/get.dart';",
+      "import 'package:getbloc/getbloc.dart';",
       "",
       "class ${1:Subject}Page extends GetView<${1:Subject}Controller> {",
       "  @override",
