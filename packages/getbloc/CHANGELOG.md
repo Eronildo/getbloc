@@ -1,3 +1,8 @@
+## [1.2.0] - 2021-07-25
+
+* Update Get Version;
+* Fix ObxExtension.
+
 ## [1.1.0] - 2021-06-13
 
 * Add Observer Widget;

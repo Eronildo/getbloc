@@ -9,7 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  getbloc:
+  flutter_test:
+    sdk: flutter
+  equatable: ^2.0.3
+  getbloc: ^1.2.0
+  getbloc_test:
     path: ../
 
 dev_dependencies:

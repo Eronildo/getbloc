@@ -411,5 +411,5 @@ abstract class StateBase<State> extends GetxController {
 /// {@endtemplate}
 extension ObxExtension<T> on BaseController<T> {
   /// {@macro obx_extension}
-  Widget obx(NotifierBuilder<T> widget) => Obx(() => widget(state));
+  Widget obx(NotifierBuilder<T> widget) => Obx(() => widget(rxState.value));
 }
